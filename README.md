@@ -6,4 +6,4 @@ jquery.timepicker
 效果
 -----------------
 
-![效果图](http://github.com/daiying-zhang/jquery.timepicker/src/demo.png)
+![效果图](http://github.com/daiying-zhang/jquery.timepicker/raw/master/src/demo.png)
