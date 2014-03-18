@@ -1,0 +1,35 @@
+/**
+ * @fileOverview
+ * @author daiying.zhang
+ */
+
+*{ margin:0; padding:0; font-style:normal; }
+.timepicker-con{height:20px; border: 1px solid lightgray;background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAEtQTFRF////GzWGTXi9GzWGHTiJIDyMJECQJ0WUK0qYL1CcM1WgN1qlO2CpP2WtQmqxRm61SXK4S3W7TXi9OFafUXm8xNLpzMzMzXpk////TIicIAAAABN0Uk5TAI6O8vLy8vLy8vLy8vLy8vLy8iB+EcoAAABQSURBVBjTdY5BCoBADAMnpd71/4/Uu9J4caEsbnPqEJIodtpdpSM7eM60OzA/YOvgJg013sCEgfjEAPWJtUPW5NCc4SnD8rIlDdGnS9Gnl1/LsjUPVChlZQAAAABJRU5ErkJggg==) no-repeat right center;}
+.timepicker{position: absolute; left:288px; top: 19px; width: 250px; padding:10px; z-index: 10000; display: none; background-color:#fff; border:solid 1px #abadb3; }
+.timepicker .timeinfo {position: relative; height: 28px; border-bottom: solid 1px #ccc; margin-bottom: 10px; }
+.timepicker .timeinfo input{ padding:0 5px; width: 34px; height: 22px; outline:none; border: solid 1px #ccc; }
+.timepicker .timeinfo .arrow{width: 0; height: 0; margin-right: 3px; cursor: pointer; border-style: solid; border-width: 5px; border-color: transparent}
+.timepicker .timeinfo .up{border-bottom-color: black; margin-top: -1px}
+.timepicker .timeinfo .down{border-top-color: black; margin-top: 3px}
+.timepicker .confirm{ display:block; padding:0 10px; height:20px; line-height:20px;  border-radius:4px; background-color:#0074d4; color:#fff; position:absolute; right:60px; top:10px;
+    font-size:12px; cursor:pointer; }
+.timepicker .cancel{ display:block; padding:0 10px; height:20px; line-height:20px;  border-radius:4px; background-color:#0074d4; color:#fff; position:absolute; right:10px; top:10px;
+    font-size:12px; cursor:pointer; }
+/* ipt盒子 */
+.timepicker .timebox{ float:left; position:relative; }
+.timepicker .split{ padding:0 5px; }
+/* 小时选项 */
+.timepicker .hourbox{  position:absolute; z-index:10; left: 28px; top: 1px; }
+/* 分选项 */
+.timepicker .minutebox{  position:absolute; z-index:10; right: 28px; top:1px; }
+/* 时间点下拉选择 */
+.timepicker .click{ position:relative; overflow:hidden;}
+.timepicker .click ul{float: left; padding: 0; margin: 0}
+.timepicker .click .hour{width: 150px; padding-right:10px; border-right: solid 1px #abadb3;  }
+.timepicker .click .hour:after,
+.timepicker .click .minute:after{position: absolute;line-height: 100px;z-index: -1;color: #cfeff1;text-align: center;font-family:"microsoft yahei" "Arial" sans-serif;font-size: 76px;}
+.timepicker .click .hour:after{content: "时";left: 0;width: 160px;}
+.timepicker .click .minute:after{content: "分";right: 0;width: 88px;}
+.timepicker .click .minute{width: 75px; padding-left:10px; }
+.timepicker .click li{float: left; width: 25px; height:25px; line-height:25px; text-align:center; font-family:tahoma; list-style: none; cursor:pointer; color:#555 }
+.timepicker .click li:hover{ background-color:#00afbc; color:#fff; }
