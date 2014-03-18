@@ -3,7 +3,7 @@
  * @author daiying.zhang
  */
 
-*{ margin:0; padding:0; font-style:normal; }
+/**{ margin:0; padding:0; font-style:normal; }*/
 .timepicker-con{height:20px; border: 1px solid lightgray;background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAEtQTFRF////GzWGTXi9GzWGHTiJIDyMJECQJ0WUK0qYL1CcM1WgN1qlO2CpP2WtQmqxRm61SXK4S3W7TXi9OFafUXm8xNLpzMzMzXpk////TIicIAAAABN0Uk5TAI6O8vLy8vLy8vLy8vLy8vLy8iB+EcoAAABQSURBVBjTdY5BCoBADAMnpd71/4/Uu9J4caEsbnPqEJIodtpdpSM7eM60OzA/YOvgJg013sCEgfjEAPWJtUPW5NCc4SnD8rIlDdGnS9Gnl1/LsjUPVChlZQAAAABJRU5ErkJggg==) no-repeat right center;}
 .timepicker{position: absolute; left:288px; top: 19px; width: 250px; padding:10px; z-index: 10000; display: none; background-color:#fff; border:solid 1px #abadb3; }
 .timepicker .timeinfo {position: relative; height: 28px; border-bottom: solid 1px #ccc; margin-bottom: 10px; }
