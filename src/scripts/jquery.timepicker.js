@@ -150,6 +150,7 @@
                 tmpl.push('<li>' + i + '</li>')
             }
             tmpl.push('</ul>');
+            tmpl.push('<div class="hour-after">时</div><div class="minute-after">分</div>');
             tmpl.push('</div>');
             tmpl.push('<div data-action="cancel" class="cancel">取消</div>');
             tmpl.push('<div data-action="done" class="confirm">确定</div>');

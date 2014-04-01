@@ -26,10 +26,10 @@
 .timepicker .click{ position:relative; overflow:hidden;}
 .timepicker .click ul{float: left; padding: 0; margin: 0}
 .timepicker .click .hour{width: 150px; padding-right:10px; border-right: solid 1px #abadb3;  }
-.timepicker .click .hour:after,
-.timepicker .click .minute:after{position: absolute;line-height: 100px;z-index: -1;color: #cfeff1;text-align: center;font-family:"microsoft yahei" "Arial" sans-serif;font-size: 76px;}
-.timepicker .click .hour:after{content: "时";left: 0;width: 160px;}
-.timepicker .click .minute:after{content: "分";right: 0;width: 88px;}
+.timepicker .click .hour-after,
+.timepicker .click .minute-after{position: absolute;line-height: 100px;z-index: -1;color: #cfeff1;text-align: center;font-family:"microsoft yahei" "Arial" sans-serif;font-size: 76px;}
+.timepicker .click .hour-after{content: "时";left: 0;width: 160px;}
+.timepicker .click .minute-after{content: "分";right: 0;width: 88px;}
 .timepicker .click .minute{width: 75px; padding-left:10px; }
 .timepicker .click li{float: left; width: 25px; height:25px; line-height:25px; text-align:center; font-family:tahoma; list-style: none; cursor:pointer; color:#555 }
 .timepicker .click li:hover{ background-color:#00afbc; color:#fff; }
