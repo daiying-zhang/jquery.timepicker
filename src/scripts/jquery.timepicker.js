@@ -21,10 +21,13 @@
     /**
      * 展示输入框
      */
-    TimePicker.fn.show = function(){
+    TimePicker.fn.show = function(val){
         !this.$picker && this.addPicker();
 
         var position = this.$node.offset();
+        var tm = (new Date('0 ' + val)),
+            h = tm.getHours(),
+            m = tm.getMinutes();
         //保证picker显示完整，页面不出现滚动条
         if(position.left + this.$picker.width() > $('body').width()){
             delete position.left;
@@ -34,7 +37,8 @@
         position.top += this.$node.height() + 2;
 
         this.$picker.css(position).show();
-        this.hourEle[0].focus();
+        this.hourEle.val(!isNaN(h) && (h < 10 ? '0' + h : h) || '00');
+        this.minuteEle.val(!isNaN(m) && (m < 10 ? '0' + m : m) || '00');
     }
 
     /**
@@ -51,6 +55,8 @@
         this.$picker = $(getTMPL.call(this)).appendTo('body').attr('id', this.id);
 
         initPickerEvent(this);
+
+        setSize(this);
 
         //时、分输入框
         this.hourEle = this.$picker.find('input.hour').val(this.opt.defHour);
@@ -81,13 +87,13 @@
     function initEvent(node){
         var self = this;
 
-        $(node).on('click', function(eve){
-            self.show();
+        $(node).on('click focus', function(eve){
+            self.show(this.value);
         });
 
-        $(document).on('click', function(eve){
+        $(document).on('click focus', function(eve){
             var $tar = $(eve.target);
-            !$tar.is(node) && self.close();
+            !$tar.is(node) /*&& !$tar.is(self.$picker)*/ && self.close();
         });
 
     }
@@ -125,6 +131,14 @@
         });
     }
 
+    function setSize(dp){
+        var $picker = dp.$picker,
+            opt = dp.opt;
+        $picker.find('.js-hour').css('width', opt.hourCols * 25);
+        $picker.find('.js-minute').css('width', opt.minuteCols * 25);
+        $picker.find('.hour-after,.minute-after').css('line-height', 25 * 24 / opt.hourCols + 'px')
+    }
+
     function getTMPL(){
         if(tmpl.length === 0){
             tmpl.push('<div class="timepicker" data-action="" style="display: none">');
@@ -138,21 +152,21 @@
 
             tmpl.push('</div>');
             tmpl.push('<div class="click" data-action="">');
-            tmpl.push('<ul class="hour" data-action="hoursNum">');
+            tmpl.push('<ul class="hour js-hour" data-action="hoursNum">');
 
             for(var i=0; i<= this.maxHour; i+= this.opt.hourStep){
                 tmpl.push('<li>' + i + '</li>')
             }
 
             tmpl.push('</ul>');
-            tmpl.push('<ul class="minute" data-action="minutesNum">');
-            for(var i=0; i<= this.maxMinute; i+= this.opt.minuteStep){
+            tmpl.push('<ul class="minute js-minute" data-action="minutesNum">');
+            for(i=0; i<= this.maxMinute; i+= this.opt.minuteStep){
                 tmpl.push('<li>' + i + '</li>')
             }
             tmpl.push('</ul>');
-            tmpl.push('<div class="hour-after">时</div><div class="minute-after">分</div>');
+            tmpl.push('<div class="hour-after js-hour">时</div><div class="minute-after js-minute">分</div>');
             tmpl.push('</div>');
-            tmpl.push('<div data-action="cancel" class="cancel">取消</div>');
+            tmpl.push('<div data-action="cancel" class="cancel">清除</div>');
             tmpl.push('<div data-action="done" class="confirm">确定</div>');
             tmpl.push('</div>')
         }
@@ -166,7 +180,7 @@
                 return
             }
             var text = $target.text();
-            this.hourEle.val(text.length === 1 ? '0' + text : text)
+            this.hourEle.val(text.length === 1 ? '0' + text : text);
         },
         'minutesNumClick' : function(eve){
             var $target = $(eve.target);
@@ -179,9 +193,11 @@
         'doneClick' : function(){
             this.$node.val(this.getValue());
             this.close()
+            this.$node.trigger('blur');
         },
         'cancelClick' : function(){
-            this.close()
+            this.$node.val('');
+            this.close();
         },
         '_getValAsNum' : function(thisVal,eve,type){
             var data = $(eve.target).data(),
@@ -212,11 +228,13 @@
     $.fn.timepicker = function(opt){
         //var now = new Date();
         opt = $.extend({
-            defHour : '00',//now.getHours(),
-            defMinute : '00',//now.getMinutes() + 1,
-            readonly : true,
-            hourStep : 1,
-            minuteStep : 5
+            defHour: '00',//now.getHours(),
+            defMinute: '00',//now.getMinutes() + 1,
+            readonly: true,
+            hourStep: 1,
+            minuteStep: 5,
+            hourCols: 6,
+            minuteCols: 3
         },opt);
 
         return this.each(function(){
